@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.use('/bulletin-board', express.static(__dirname + '/'));
+app.use('/demo-app', express.static(__dirname + '/'));
 app.use('/', express.static(__dirname + '/'));
 
 var env = process.env.NODE_ENV;
@@ -30,10 +30,10 @@ if ('production' == app.get('env')) {
 	app.use(errorHandler());
 }
 
-app.get('/bulletin-board', routes.index);
+app.get('/demo-app', routes.index);
 app.get('/', routes.index);
 
-app.get('/bulletin-board/api/events', function (req, res) {
+app.get('/demo-app/api/events', function (req, res) {
 	res.json(eventService.getAllEvents())
 });
 
@@ -41,7 +41,7 @@ app.get('/api/events', function (req, res) {
   res.json(eventService.getAllEvents())
 });
 
-app.post('/bulletin-board/api/event', function (req, res) {
+app.post('/demo-app/api/event', function (req, res) {
 	eventService.addEvent(req.body);
 	res.json(eventService.getAllEvents());
 });
@@ -51,7 +51,7 @@ app.post('/api/event', function (req, res) {
   res.json(eventService.getAllEvents());
 });
 
-app.delete('/bulletin-board/api/event/:eventId', function (req, res) {
+app.delete('/demo-app/api/event/:eventId', function (req, res) {
 	const result = eventService.deleteEvent(req.params.eventId);
 	res.json({message: result ? 'Event successfully deleted.' : `Event with id ${req.params.eventId} does not exist.`});
 });

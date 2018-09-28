@@ -14,7 +14,7 @@ const eventService = {
 
 		fetchEvents: function () {
 			var events = [];
-			this.$http.get('/bulletin-board/api/events')
+			this.$http.get('/demo-app/api/events')
 				.success(function (events) {
 					this.$set('events', events);
 				})
@@ -25,7 +25,7 @@ const eventService = {
 
 		addEvent: function (e) {
 			if (this.event.title.trim()) {
-				this.$http.post('/bulletin-board/api/event', this.event)
+				this.$http.post('/demo-app/api/event', this.event)
 					.success(function (res) {
 						this.events.push({
 							id: this.event.id,
@@ -44,7 +44,7 @@ const eventService = {
 
 		deleteEvent: function (id) {
 			if (confirm('Are you sure you want to delete this event?')) {
-				this.$http.delete('/bulletin-board/api/event/' + id)
+				this.$http.delete('/demo-app/api/event/' + id)
 					.success(function (res) {
 						var index = this.events.findIndex(x => x.id === id);
 						this.events.splice(index, 1);

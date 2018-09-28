@@ -15,7 +15,7 @@
       }
     ],
     "selector": {
-      "app": "bulletin-board"
+      "app": "demo-app"
     }
   }
 }

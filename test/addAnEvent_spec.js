@@ -10,7 +10,7 @@ describe("Event", function () {
 	});
 
 	it("should create an event", function (done) {
-		request.post(`${base_url}/bulletin-board/api/event`, {
+		request.post(`${base_url}/demo-app/api/event`, {
 			title: "Foo",
 			detail: "Bar",
 			date: "10/10/2010"
@@ -21,7 +21,7 @@ describe("Event", function () {
 	});
 
 	it("should get all event", function (done) {
-		request(`${base_url}/bulletin-board/api/events`, function (error, response, body) {
+		request(`${base_url}/demo-app/api/events`, function (error, response, body) {
 			const responseJSON = JSON.parse(body);
 			assert.equal(responseJSON.length, 4);
 			done();
